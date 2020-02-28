@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package noteservice;
+
+service NoteService {
+    rpc Delete (NoteRequestId) returns (Empty) {}
+}
+
+message Empty {}
+
+message NoteRequestId {
+    string id = 1;
+}

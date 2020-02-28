@@ -66,18 +66,18 @@ function main() {
                 })
             }
         },
-        // delete: (call, callback) => {
-        //     let existingNoteIndex = notes.findIndex((n) => n.id == call.request.id)
-        //     if (existingNoteIndex != -1) {
-        //         notes.splice(existingNoteIndex, 1)
-        //         callback(null, {})
-        //     } else {
-        //         callback({
-        //             code: grpc.status.NOT_FOUND,
-        //             details: "Not found"
-        //         })
-        //     }
-        // }
+        delete: (call, callback) => {
+            let existingNoteIndex = notes.findIndex((n) => n.id == call.request.id)
+            if (existingNoteIndex != -1) {
+                notes.splice(existingNoteIndex, 1)
+                callback(null, {})
+            } else {
+                callback({
+                    code: grpc.status.NOT_FOUND,
+                    details: "Not found"
+                })
+            }
+        }
     });
 
     server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());

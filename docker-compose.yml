@@ -33,3 +33,10 @@ services:
             dockerfile: Dockerfile
         ports:
             - "3004:3000"
+    delete_note:
+        container_name: delete_note
+        build:
+            context: ./delete_note
+            dockerfile: Dockerfile
+        ports:
+            - "3005:3000"
