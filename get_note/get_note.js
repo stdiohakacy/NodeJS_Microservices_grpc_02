@@ -20,12 +20,15 @@ const port = 3000
 
 function main() {
     let client = new note.NoteService('server:50051', grpc.credentials.createInsecure());
-    app.get('/notes', (req, res) => {
-        client.list({}, (err, data) => {
-            console.log(err);
-            console.log(data);
-            res.send(data);
-        });
+    app.get('/note/:id', (req, res) => {
+        const id = req.params.id;
+        client.get({ id }, (error, note) => {
+            if (!error) {
+                res.json(note);
+            } else {
+                console.error(error)
+            }
+        })
     });
     app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 }

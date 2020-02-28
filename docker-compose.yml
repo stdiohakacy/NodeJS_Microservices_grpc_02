@@ -1,14 +1,28 @@
 version: "3"
 services:
-  server:
-    container_name: server
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-  get_notes:
-    container_name: get_notes
-    build:
-      context: ./get_notes
-      dockerfile: Dockerfile
-    ports:
-      - "3001:3000"
+    server:
+        container_name: server
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+    list_note:
+        container_name: list_note
+        build:
+            context: ./list_note
+            dockerfile: Dockerfile
+        ports:
+            - "3001:3000"
+    get_note:
+        container_name: get_note
+        build:
+            context: ./get_note
+            dockerfile: Dockerfile
+        ports:
+            - "3002:3000"
+    insert_note:
+        container_name: insert_note
+        build:
+            context: ./insert_note
+            dockerfile: Dockerfile
+        ports:
+            - "3003:3000"

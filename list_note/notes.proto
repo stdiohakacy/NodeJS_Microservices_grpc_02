@@ -4,10 +4,6 @@ package noteservice;
 
 service NoteService {
     rpc List (Empty) returns (NoteList) {}
-    rpc Get (NoteRequestId) returns (Note) {}
-    rpc Insert (Note) returns (Note) {}
-    rpc Update (Note) returns (Note) {}
-    rpc Delete (NoteRequestId) returns (Empty) {}
 }
 
 message Empty {}
@@ -20,8 +16,4 @@ message Note {
 
 message NoteList {
     repeated Note notes = 1;
-}
-
-message NoteRequestId {
-    string id = 1;
 }
