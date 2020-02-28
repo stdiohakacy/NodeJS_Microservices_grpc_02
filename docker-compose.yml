@@ -1,26 +1,14 @@
 version: "3"
 services:
-  grpc-server:
-    container_name: grpc-server
+  server:
+    container_name: server
     build:
       context: ./server
       dockerfile: Dockerfile
-  grpc-client:
-    container_name: grpc-client
+  get_notes:
+    container_name: get_notes
     build:
-      context: ./client
+      context: ./get_notes
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    ports:
-      - "8080:80"
-    volumes:
-      - ./config/nginx:/etc/nginx/conf.d  
-    links:
-      - grpc-client:client
-    depends_on:
-      - grpc-server
-      - grpc-client
+      - "3001:3000"
