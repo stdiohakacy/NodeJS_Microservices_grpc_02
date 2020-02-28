@@ -53,19 +53,19 @@ function main() {
             notes.push(note)
             callback(null, note)
         },
-        // update: (call, callback) => {
-        //     let existingNote = notes.find((n) => n.id == call.request.id)
-        //     if (existingNote) {
-        //         existingNote.title = call.request.title
-        //         existingNote.content = call.request.content
-        //         callback(null, existingNote)         
-        //     } else {
-        //         callback({
-        //             code: grpc.status.NOT_FOUND,
-        //             details: "Not found"
-        //         })
-        //     }
-        // },
+        update: (call, callback) => {
+            let existingNote = notes.find((n) => n.id == call.request.id)
+            if (existingNote) {
+                existingNote.title = call.request.title
+                existingNote.content = call.request.content
+                callback(null, existingNote)         
+            } else {
+                callback({
+                    code: grpc.status.NOT_FOUND,
+                    details: "Not found"
+                })
+            }
+        },
         // delete: (call, callback) => {
         //     let existingNoteIndex = notes.findIndex((n) => n.id == call.request.id)
         //     if (existingNoteIndex != -1) {

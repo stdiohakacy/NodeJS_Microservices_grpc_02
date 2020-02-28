@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package noteservice;
+
+service NoteService {
+    rpc Update (Note) returns (Note) {}
+}
+
+message Note {
+    string id = 1;
+    string title = 2;
+    string content = 3;
+}

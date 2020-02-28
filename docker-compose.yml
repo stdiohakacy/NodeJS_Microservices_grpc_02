@@ -26,3 +26,10 @@ services:
             dockerfile: Dockerfile
         ports:
             - "3003:3000"
+    update_note:
+        container_name: update_note
+        build:
+            context: ./update_note
+            dockerfile: Dockerfile
+        ports:
+            - "3004:3000"
